@@ -18,7 +18,6 @@
             <button class="btn" id="general">#music</button>
             <button class="btn" id="general">#ninjas</button>
         </div>
-    
 
         <div class="chat-window">
             <ul class="chat-list list-group"></ul>
@@ -52,15 +51,9 @@
     </div>
 
     <script src="http://cdn.date-fns.org/v1.9.0/date_fns.min.js"></script>
-    <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-firestore.js"></script>
-
-    <!-- TODO: Add SDKs for Firebase products that you want to use
-        https://firebase.google.com/docs/web/setup#available-libraries -->
-
     <script>
-        // Your web app's Firebase configuration
         var firebaseConfig = {
             apiKey: "AIzaSyBEzTQXNsVTksd4wVdEJacuj90tAYDOZb8",
             authDomain: "fir-763cc.firebaseapp.com",
@@ -70,13 +63,9 @@
             messagingSenderId: "401890501009",
             appId: "1:401890501009:web:b4702c510ab826c07d3a30"
         };
-        // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
         const db = firebase.firestore()
     </script>
-    
-     
-
     <script src="Scripts/chat.js"></script>
     <script src="Scripts/ui.js"></script>
     <script src="Scripts/app.js"></script>
