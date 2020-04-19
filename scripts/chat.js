@@ -4,6 +4,7 @@ class Chatroom {
         this.username = username
         this.room = room
         this.chats = db.collection('chats')
+        this.unsub
     }
     async addChat(message){
         const now = new Date()
@@ -17,18 +18,29 @@ class Chatroom {
         return response
     }
     getChats(callback) {
-        this.chats.onSnapshot(snapshot =>{
-            snapshot.docChanges().forEach(change => {
-                if(change.type === 'added') {
-                    callback(change.doc.data())
-                }
-            })
-        })
+        this.unsub = this.chats
+                .where('room', '==', this.room)
+                .orderBy('created_at')
+                .onSnapshot(snapshot =>{
+                    snapshot.docChanges().forEach(change => {
+                        if(change.type === 'added') {
+                            callback(change.doc.data())
+                        }
+                    })
+                })
+    }
+    updateUsername(username) {
+        this.username = username
+    }
+    updateRoom(room) {
+        this.room = room
+        if(this.unsub) {
+            this.unsub()
+        }
     }
 }
 
-const chat = new Chatroom('jack', 'general')
 
-chat.getChats((data) => {
-    console.log(data)
-})
+
+
+ 
