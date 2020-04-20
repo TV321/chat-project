@@ -1,4 +1,3 @@
-
 class Chatroom {
     constructor(username, room) {
         this.username = username
